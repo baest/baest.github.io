@@ -7,7 +7,7 @@ use Data::Dumper;
 
 use vars qw/@argv/;
 
-my ($file, $year) = @ARGV;
+my ($file, $template, $year) = @ARGV;
 
 unless ($file) {
 	$year = DateTime->now->year;
@@ -15,6 +15,12 @@ unless ($file) {
 }
 
 die ("Please provide file") unless ($file && -r $file);
+
+unless ($template) {
+	$template = 'tt.htm.txt';
+}
+
+die ("Please provide template: $template") unless(-r $template);
 
 if (!$year && $file =~ /(20\d{2})/) {
 	$year = $1;
@@ -57,7 +63,7 @@ sub push_to_category {
 	$categories{$name} = [sort {lc $a cmp lc $b} @_];
 }
 
-my $template = Template->new({
+my $t = Template->new({
 	INTERPOLATE  => 1,
 #    DEBUG        => 'all',
 });
@@ -65,12 +71,12 @@ my $template = Template->new({
 my @categories = map {[$_, $categories{$_} ]} sort {lc $a cmp lc $b} keys %categories;
 
 
-$template->process(
-	'tt.htm.txt',
+$t->process(
+	$template,
 	{
 		year => $year,
 #		data => \%categories,
 		data => \@categories,
 	}
-) || die $template->error(), "\n";
+) || die $t->error(), "\n";
 
