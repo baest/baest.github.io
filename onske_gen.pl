@@ -1,11 +1,9 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 use warnings;
 use Template;
 use DateTime;
 use Data::Dumper;
-
-use vars qw/@argv/;
 
 my ($file, $template, $year) = @ARGV;
 
