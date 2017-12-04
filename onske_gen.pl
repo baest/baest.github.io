@@ -4,8 +4,20 @@ use warnings;
 use Template;
 use DateTime;
 use Data::Dumper;
+use WWW::Shorten::Googl;
+use JSON::MaybeXS;
+ use File::Slurp::Tiny qw/read_file write_file/;
+
+$ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
 
 my ($file, $template, $year) = @ARGV;
+my %url_map;
+
+my $url_file = 'urls.txt';
+if (-f $url_file) {
+	my $file = read_file($url_file);
+	%url_map = %{decode_json($file)};
+}
 
 unless ($file) {
 	$year = DateTime->now->year;
@@ -45,7 +57,7 @@ while (<FILE>) {
 
 	s/^\s+//g;
 #	s!\s*//.*!!g;
-	s!(http(s)?://[\w_/\.-]+)!<a href="$1">$1</a>!g;
+	s!(http(s)?://[\w_/\.#-]+)!get_link($1)!eg;
 
 	#[% x FILTER html %]
 
@@ -53,7 +65,22 @@ while (<FILE>) {
 }
 push_to_category($last_category, @wishes);
 
+write_file($url_file, encode_json(\%url_map));
+
 close (FILE);
+
+sub get_link {
+	my ($url) = @_;
+	if (exists $url_map{$url}) {
+		$url = $url_map{$url};
+	}
+	elsif ($url !~ /goo\.gl/) {
+		my $old_url = $url;
+		$url = makeashorterlink($url);
+		$url_map{$old_url} = $url;
+	}
+	return qq!<a href="$url">$url</a>!;
+}
 
 sub push_to_category {
 	my $name = shift;
