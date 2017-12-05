@@ -16,6 +16,7 @@ my $json = JSON::MaybeXS->new(canonical => 1);
 $ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
 
 my ($file, $template, $year) = @ARGV;
+my $name;
 my %url_map;
 
 my $url_file = 'urls.txt';
@@ -51,6 +52,9 @@ my $last_category;
 
 while (<FILE>) {
 	chomp;
+	if (/^\*name: (\w+)/) {
+		$name = $1;
+	}
 	next if (/^\s*$/ || /^\*/);
 
 	unless (/^\s/) {
@@ -111,6 +115,7 @@ $t->process(
 		year => $year,
 #		data => \%categories,
 		data => \@categories,
+		name => $name,
 	}
 ) || die $t->error(), "\n";
 

@@ -1,3 +1,4 @@
+*name: Martin
 Diverse
 *	Gavekort til Kaiser sport (til løbesko)
 	Årskort til Zoo
@@ -19,9 +20,10 @@ Køkken
 	Suppeske
 	Kande til fx kakao
 
-Bog
+Bøger
 	The Design and Implementation of the FreeBSD Operating System (2nd Edition) kindle edition (https://www.amazon.com/Design-Implementation-FreeBSD-Operating-System-ebook/dp/B00O56CFEE/)
-	Sov igennem uden gråd (set https://bogreolen.dk/sov-igennem-uden-graad-for-1-6-aarige_elizabeth-pantley_9788799559886)
+*	Sov igennem uden gråd (set https://bogreolen.dk/sov-igennem-uden-graad-for-1-6-aarige_elizabeth-pantley_9788799559886)
+* The No-Cry Sleep Solution for Toddlers and Preschoolers: Gentle Ways to Stop Bedtime Battles and Improve Your Child’s Sleep (https://www.amazon.com/No-Cry-Sleep-Solution-Toddlers-Preschoolers-ebook/dp/B000R4FGNU/ref=sr_1_3?ie=UTF8&qid=1512501096&sr=8-3&keywords=Elizabeth+Pantley)
 
 Cykel og træningsting
 *	Cykelkuffert

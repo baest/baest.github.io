@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Martins ønskeliste $year</title>
+<title>[% name %]s ønskeliste $year</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -16,7 +16,7 @@ li { padding-top:3px; margin-left:10px; }
 
 <body>
 
-<h1>Martins ønskeliste $year</h1>
+<h1>[% name %]s ønskeliste $year</h1>
 
 [% FOREACH d IN data %]
 	<h2>$d.0</h2>
