@@ -52,7 +52,7 @@ my $last_category;
 
 while (<FILE>) {
 	chomp;
-	if (/^\*name: (\w+)/) {
+	if (/^\*\s*name:\s+(\w+)/) {
 		$name = $1;
 	}
 	next if (/^\s*$/ || /^\*/);
