@@ -6,7 +6,11 @@ use DateTime;
 use Data::Dumper;
 use WWW::Shorten::Googl;
 use JSON::MaybeXS;
- use File::Slurp::Tiny qw/read_file write_file/;
+use File::Slurp::Tiny qw/read_file write_file/;
+use LWP::UserAgent;
+
+my $ua = LWP::UserAgent->new;
+$ua->max_redirect(0);
 
 $ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
 
@@ -78,6 +82,10 @@ sub get_link {
 		my $old_url = $url;
 		$url = makeashorterlink($url);
 		$url_map{$old_url} = $url;
+	}
+	else {
+		my $response = $ua->get($url);
+		warn $url, ' -> ', $response->header('location'), "\n";
 	}
 	return qq!<a href="$url">$url</a>!;
 }
