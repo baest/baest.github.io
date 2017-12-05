@@ -11,6 +11,7 @@ use LWP::UserAgent;
 
 my $ua = LWP::UserAgent->new;
 $ua->max_redirect(0);
+my $json = JSON::MaybeXS->new(canonical => 1);
 
 $ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
 
@@ -20,7 +21,7 @@ my %url_map;
 my $url_file = 'urls.txt';
 if (-f $url_file) {
 	my $file = read_file($url_file);
-	%url_map = %{decode_json($file)};
+	%url_map = %{$json->decode($file)};
 }
 
 unless ($file) {
@@ -69,7 +70,7 @@ while (<FILE>) {
 }
 push_to_category($last_category, @wishes);
 
-write_file($url_file, encode_json(\%url_map));
+write_file($url_file, $json->encode(\%url_map));
 
 close (FILE);
 
