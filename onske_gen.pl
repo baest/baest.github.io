@@ -85,7 +85,6 @@ sub get_link {
 	}
 	elsif ($url !~ /goo\.gl/) {
 		my $old_url = $url;
-		warn $url;
 		$url = makeashorterlink($url);
 		$url_map{$old_url} = $url;
 	}
