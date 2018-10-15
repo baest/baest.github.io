@@ -111,7 +111,6 @@ sub push_to_category {
 my @categories = map {[$_, $categories{$_} ]} sort {lc $a cmp lc $b} keys %categories;
 
 say Mojo::Template->new(vars => 1)->render_file($template, {
-		fullname => "${name}s ønskeliste $year",
 		year => $year,
 		data => \@categories,
 		name => $name,
