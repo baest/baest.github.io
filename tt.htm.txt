@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>[% name %]s ønskeliste $year</title>
+<title><%= $fullname %></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -16,12 +16,13 @@ li { padding-top:3px; margin-left:10px; }
 
 <body>
 
-<h1>[% name %]s ønskeliste $year</h1>
+<h1><%= $fullname %></h1>
 
-[% FOREACH d IN data %]
-	<h2>$d.0</h2>
-	[% FOREACH x IN d.1 %]	<li>$x</li>
-	[% END %]
-[% END %]
+% for my $d (@$data) {
+<h2><%= $d->[0] %></h2>
+% for my $x (@{$d->[1]}) {
+		<li><%= $x %></li>
+		% }
+	% }
 </body>
 </html>

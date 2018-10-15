@@ -1,13 +1,20 @@
 #!/usr/bin/env perl
-use strict;
+use 5.020;
 use warnings;
-use Template;
+#use Template;
+use utf8;
+use Mojo::Template;
 use DateTime;
 use Data::Dumper;
 use WWW::Shorten::Googl;
-use JSON::MaybeXS;
+#use WWW::Shorten::Bitly;
+#use JSON::MaybeXS;
 use File::Slurp::Tiny qw/read_file write_file/;
 use LWP::UserAgent;
+
+#https://www.engadget.com/2018/03/30/google-shutting-down-goo-gl-url-shortening-service/
+#https://metacpan.org/pod/WWW::Shorten::Bitly
+#bitly access token: 92aaefbca552ec8bce0899b8a1f241f4af399389
 
 my $ua = LWP::UserAgent->new;
 $ua->max_redirect(0);
@@ -101,21 +108,12 @@ sub push_to_category {
 	$categories{$name} = [sort {lc $a cmp lc $b} @_];
 }
 
-my $t = Template->new({
-	INTERPOLATE  => 1,
-#    DEBUG        => 'all',
-});
-
 my @categories = map {[$_, $categories{$_} ]} sort {lc $a cmp lc $b} keys %categories;
 
-
-$t->process(
-	$template,
-	{
+say Mojo::Template->new(vars => 1)->render_file($template, {
+		fullname => "${name}s ønskeliste $year",
 		year => $year,
-#		data => \%categories,
 		data => \@categories,
 		name => $name,
-	}
-) || die $t->error(), "\n";
+}) || die "$@\n";
 
