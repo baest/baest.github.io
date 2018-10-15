@@ -73,7 +73,7 @@ while (<FILE>) {
 
 	s/^\s+//g;
 #	s!\s*//.*!!g;
-	s!(http(s)?://[\wæøåÆØÅ_/\.\#\?\!-]+)!get_link($1)!eg;
+	s!(http(s)?://[\wæøåÆØÅ_/\.\#\?\!\=-]+)!get_link($1)!eg;
 
 	#[% x FILTER html %]
 
