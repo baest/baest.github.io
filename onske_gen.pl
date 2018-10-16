@@ -6,9 +6,10 @@ use utf8;
 use Mojo::Template;
 use DateTime;
 use Data::Dumper;
-use WWW::Shorten::Googl;
+#use WWW::Shorten::Googl;
+use WWW::Shorten::TinyURL;
 #use WWW::Shorten::Bitly;
-#use JSON::MaybeXS;
+use JSON::MaybeXS;
 use File::Slurp::Tiny qw/read_file write_file/;
 use LWP::UserAgent;
 
@@ -20,7 +21,7 @@ my $ua = LWP::UserAgent->new;
 $ua->max_redirect(0);
 my $json = JSON::MaybeXS->new(canonical => 1);
 
-$ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
+#$ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
 
 my ($file, $template, $year) = @ARGV;
 my $name;
@@ -75,8 +76,6 @@ while (<FILE>) {
 #	s!\s*//.*!!g;
 	s!(http(s)?://[\wæøåÆØÅ_/\.\#\?\!\=-]+)!get_link($1)!eg;
 
-	#[% x FILTER html %]
-
 	push @wishes, $_;
 }
 push_to_category($last_category, @wishes);
@@ -90,7 +89,7 @@ sub get_link {
 	if (exists $url_map{$url}) {
 		$url = $url_map{$url};
 	}
-	elsif ($url !~ /goo\.gl/) {
+	elsif ($url !~ /tinyurl\.com/) {
 		my $old_url = $url;
 		$url = makeashorterlink($url);
 		$url_map{$old_url} = $url;
@@ -115,4 +114,3 @@ say Mojo::Template->new(vars => 1)->render_file($template, {
 		data => \@categories,
 		name => $name,
 }) || die "$@\n";
-
