@@ -121,7 +121,7 @@ sub get_link {
 		my $response = $ua->get($url);
 		warn $url, ' -> ', $response->header('location'), "\n";
 	}
-	return qq!<a href="$url">$url</a>!;
+	return qq!<a href="$url" target="_blank">$url</a>!;
 }
 
 sub push_to_category {
