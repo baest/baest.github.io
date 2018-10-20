@@ -21,8 +21,6 @@ my $ua = LWP::UserAgent->new;
 $ua->max_redirect(0);
 my $json = JSON::MaybeXS->new(canonical => 1);
 
-#$ENV{GOOGLE_API_KEY} = 'AIzaSyBjjUbAIwmM7bt-3v1QdOC4XcZxk5zlK3Y';
-
 my ($file, $template, $year) = @ARGV;
 my $name;
 my %url_map;
