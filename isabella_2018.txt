@@ -1,10 +1,8 @@
 *name: Isabella
 Legetøj
-	Øko dyr, giraf (set https://www.naturebaby.dk/shop/oeko-dyr-giraf-21430p.html)
-	Øko dyr, elefant - afrikansk (set https://www.naturebaby.dk/shop/oeko-dyr-elefant-21431p.html)
-	Øko dyr, krokodille (set https://www.naturebaby.dk/shop/oeko-dyr-krokodille-21433p.html)
-	Øko jungledyr (set https://www.naturebaby.dk/shop/oeko-jungledyr-10560p.html)
-	Øko dyr, skildpadde (set https://www.naturebaby.dk/shop/oeko-dyr-skildpadde-21432p.html)
+	Legetøjs dyr, krokodille (set https://www.naturebaby.dk/shop/oeko-dyr-krokodille-21433p.html)
+	Legetøjs jungledyr sæt (set https://www.naturebaby.dk/shop/oeko-jungledyr-10560p.html)
+	Legetøjs dyr, skildpadde (set https://www.naturebaby.dk/shop/oeko-dyr-skildpadde-21432p.html)
 	Haveredskaber, 3 dele, Blå, Glückskäfer (set https://www.purebaby.dk/haveredskaber-3-dele-2-var-26001)
 	Forme til modellervoks fra Ses Creative (set https://www.sundleg.dk/modellervoks-forme)
 *	Grå hoppeko fra Kidzz Farm (set https://www.sundleg.dk/graa-hoppy-ko-fra-kidzzfarm)
