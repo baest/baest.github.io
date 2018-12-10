@@ -51,7 +51,7 @@ if (!$year && $file =~ /(20\d{2})/) {
 
 die ("Please provide year") unless($year);
 
-for (qw/martin isabella gitte/) {
+for (qw/martin isabella gitte sebastian/) {
 	my $input_file = "$_\_2018.txt";
 	my $output_file = "gen/\u$_\_ønskeseddel.html";
 	next unless -r $input_file;
